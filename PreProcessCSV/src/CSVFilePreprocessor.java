@@ -114,12 +114,13 @@ public final class CSVFilePreprocessor {
 			System.out.println(noOfRow+"fghj");
 			i=0;
 			j=0;
-			String[] rowResult = new String[365]; 
+			String[] rowResult = new String[188]; 
 			
 			if(noOfRow==0)
 			{
 				while(i<65)
 				{
+					row[i] = row[i].replace(' ', '_');
 					if(i<3 && i>0)
 					{
 						rowResult[j++] = row[i]; 
@@ -127,32 +128,21 @@ public final class CSVFilePreprocessor {
 					else if( i>=3 && i<61 )
 					{
 						
-						rowResult[j++] = "1" + row[i];
-						rowResult[j++] = "2" + row[i];
-						rowResult[j++] = "3" + row[i];
-						rowResult[j++] = "4" + row[i];
-						rowResult[j++] = "5" + row[i];
+						rowResult[j++] = "Low_E_" + row[i];
+						rowResult[j++] = "Med_E_" + row[i];
+						rowResult[j++] = "High_E_" + row[i++];
+						row[i] = row[i].replace(' ', '_');
+						rowResult[j++] = "Low_S_" + row[i];
+						rowResult[j++] = "Med_S_" + row[i];
+						rowResult[j++] = "High_S_" + row[i];
+						
 					}
 					else if( i>=61 && i<65)
 					{
-						if(i<63)
-						{
-							rowResult[j++] = "1"+row[i];
-							rowResult[j++] = "2"+row[i];
-							rowResult[j++] = "3"+row[i];
-							rowResult[j++] = "4"+row[i];
-							rowResult[j++] = "5"+row[i];
-							rowResult[j++] = "6"+row[i];
-							rowResult[j++] = "7"+row[i];
-						}
-						else
-						{
-							rowResult[j++] = "1"+row[i];
-							rowResult[j++] = "2"+row[i];
-							rowResult[j++] = "3"+row[i];
-							rowResult[j++] = "4"+row[i];
-						}
 						
+							rowResult[j++] = "Low_" + row[i];
+							rowResult[j++] = "Med_" + row[i];
+							rowResult[j++] = "High_" + row[i];
 						
 					}
 					i++;
@@ -180,8 +170,8 @@ public final class CSVFilePreprocessor {
 					if(i==2)
 					{
 						if(Integer.parseInt(row[i])==1)
-						rowResult[j++] = "Once";
-						else rowResult[j++] = "Multiple";
+						rowResult[j++] = "0";
+						else rowResult[j++] = "1";
 					}
 				}
 				else if(i>=3 && i<61)
@@ -189,46 +179,34 @@ public final class CSVFilePreprocessor {
 					if(Integer.parseInt(row[i])==1)
 					{
 						//System.out.println("allla j");
-						rowResult[j++] = "0.7";
-						rowResult[j++] = "0.3";	
-						rowResult[j++] = "0.0";
+						rowResult[j++] = "1.0";
 						rowResult[j++] = "0.0";
 						rowResult[j++] = "0.0";
 					}
 					else if(Integer.parseInt(row[i])==2)
 					{
-						rowResult[j++] = "0.2";
-						rowResult[j++] = "0.6";	
-						rowResult[j++] = "0.2";
-						rowResult[j++] = "0.0";
-						rowResult[j++] = "0.0";
+						rowResult[j++] = "0.3";
+						rowResult[j++] = "0.7";	
+						rowResult[j++] = "0.0";	
 					}
 					else if(Integer.parseInt(row[i])==3)
 					{
-						rowResult[j++] = "0.0";
-						rowResult[j++] = "0.2";	
-						rowResult[j++] = "0.6";
-						rowResult[j++] = "0.2";
-						rowResult[j++] = "0.0";
+						rowResult[j++] = "0.1";
+						rowResult[j++] = "0.8";	
+						rowResult[j++] = "0.1";
 					}
 					else if(Integer.parseInt(row[i])==4)
 					{
 						rowResult[j++] = "0.0";
-						rowResult[j++] = "0.0";	
-						rowResult[j++] = "0.2";
-						rowResult[j++] = "0.6";
-						rowResult[j++] = "0.2";
+						rowResult[j++] = "0.7";	
+						rowResult[j++] = "0.3";
 					}
 					else if(Integer.parseInt(row[i])==5)
 					{
 						rowResult[j++] = "0.0";
-						rowResult[j++] = "0.0";		
-						rowResult[j++] = "0.0";
-						rowResult[j++] = "0.3";
-						rowResult[j++] = "0.7";
+						rowResult[j++] = "0.0";	
+						rowResult[j++] = "1.0";
 					}
-					
-					
 				}
 				else if(i>=61 && i<65)
 				{
@@ -236,74 +214,46 @@ public final class CSVFilePreprocessor {
 					{
 						if(Integer.parseInt(row[i])==1)
 						 {
-							rowResult[j++] = "0.8";
-							rowResult[j++] = "0.1";	
-							rowResult[j++] = "0.1";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
+							rowResult[j++] = "1.0";
+							rowResult[j++] = "0.0";	
 							rowResult[j++] = "0.0";
 							
 						 }
 						else if(Integer.parseInt(row[i])==2)
 						{
-							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.6";		
-							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
+							rowResult[j++] = "0.9";
+							rowResult[j++] = "0.1";	
 							rowResult[j++] = "0.0";
 						}
 						else if(Integer.parseInt(row[i])==3)
 						{
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.2";		
-							rowResult[j++] = "0.6";
-							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
+							rowResult[j++] = "0.7";
+							rowResult[j++] = "0.3";	
 							rowResult[j++] = "0.0";
 						}
 						else if(Integer.parseInt(row[i])==4)
 						{
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";		
 							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.6";
+							rowResult[j++] = "0.6";	
 							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
 						}
 						else if(Integer.parseInt(row[i])==5)
 						{
 							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";		
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.6";
-							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.0";
+							rowResult[j++] = "0.7";	
+							rowResult[j++] = "0.3";
 						}
 						else if(Integer.parseInt(row[i])==6)
 						{
 							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";		
+							rowResult[j++] = "0.9";	
 							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.2";
-							rowResult[j++] = "0.6";
-							rowResult[j++] = "0.2";
 						}
 						else if(Integer.parseInt(row[i])==7)
 						{
 							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";		
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.0";
-							rowResult[j++] = "0.1";
-							rowResult[j++] = "0.1";
-							rowResult[j++] = "0.8";
+							rowResult[j++] = "0.0";	
+							rowResult[j++] = "1.0";
 						}
 					
 					
@@ -313,31 +263,27 @@ public final class CSVFilePreprocessor {
 					{
 						if(row[i].contentEquals("Surely not"))
 						{
-							  rowResult[j++] = "0.8";
-							  rowResult[j++] = "0.2";
-							  rowResult[j++] = "0.0";
-							  rowResult[j++] = "0.0";
+							rowResult[j++] = "1.0";
+							rowResult[j++] = "0.0";	
+							rowResult[j++] = "0.0";
 						}
 						if(row[i].contentEquals("Probably not"))
 						{
-						  rowResult[j++] = "0.4";
-						  rowResult[j++] = "0.6";
-						  rowResult[j++] = "0.0";
-						  rowResult[j++] = "0.0";
+							rowResult[j++] = "0.4";
+							rowResult[j++] = "0.6";	
+							rowResult[j++] = "0.0";
 						}
 						if(row[i].contentEquals("Probably"))
 						{
-						  rowResult[j++] = "0.8";
-						  rowResult[j++] = "0.2";
-						  rowResult[j++] = "0.6";
-						  rowResult[j++] = "0.2";
+							rowResult[j++] = "0.0";
+							rowResult[j++] = "0.6";	
+							rowResult[j++] = "0.0";
 						}
 						if(row[i].contentEquals("Surely"))
 						{
-						  rowResult[j++] = "0.8";
-						  rowResult[j++] = "0.0";
-						  rowResult[j++] = "0.2";
-						  rowResult[j++] = "0.8";
+							rowResult[j++] = "0.0";
+							rowResult[j++] = "0.0";	
+							rowResult[j++] = "1.0";
 						}
 						
 					}
@@ -411,6 +357,7 @@ public final class CSVFilePreprocessor {
 		FileReader fileReader = new FileReader(file);
 		CSVReader csvReader = new CSVReader(fileReader);
 		List<String[]> rows = csvReader.readAll();
+		System.out.println(rows.get(0).length);
 		csvReader.close();
 		
 		return rows;
@@ -435,6 +382,13 @@ public final class CSVFilePreprocessor {
 		CSVWriter csvWriter = new CSVWriter(new FileWriter(file));
 		csvWriter.writeAll(rows);
 		csvWriter.close();
+		
+		FileReader fileReader = new FileReader(file);
+		CSVReader csvReader = new CSVReader(fileReader);
+		List<String[]> rowss = csvReader.readAll();
+		System.out.println(rows.get(0).length);
+		csvReader.close();
+		
 	}
 	
 	/*
